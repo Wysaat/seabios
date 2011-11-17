@@ -29,8 +29,9 @@ COMMONCFLAGS = -I$(OUT) -Os -MD -g \
     -Wall -Wno-strict-aliasing -Wold-style-definition \
     $(call cc-option,$(CC),-Wtype-limits,) \
     -m32 -march=i386 -mregparm=3 -mpreferred-stack-boundary=2 \
-    -minline-all-stringops \
-    -freg-struct-return -ffreestanding -fno-delete-null-pointer-checks \
+    -minline-all-stringops -fno-tree-loop-optimize \
+    -freg-struct-return -ffreestanding -fomit-frame-pointer \
+    -fno-delete-null-pointer-checks -fno-caller-saves \
     -ffunction-sections -fdata-sections -fno-common
 COMMONCFLAGS += $(call cc-option,$(CC),-nopie,)
 COMMONCFLAGS += $(call cc-option,$(CC),-fno-stack-protector,)
